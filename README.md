@@ -1,3 +1,3 @@
-# Tajikgram
+# Camera Kavsar
 
-Tajikgram project.
+Camera Kavsar project.
