@@ -37,7 +37,6 @@ const UCard = ({ id, name, centerId, cameraUrl, setClassRoomId }: UCardProps) =>
           <h2 className="text-lg font-semibold text-gray-800 text-center">Name{name}</h2>
           <p className="text-sm text-gray-500 text-center">Center ID: {centerId}</p>
         </div>
-
         <div className="flex flex-col sm:flex-row gap-2 mt-3">
           <button
             onClick={() => setOpenEdit(true)}
