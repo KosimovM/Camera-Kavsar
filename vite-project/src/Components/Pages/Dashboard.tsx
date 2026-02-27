@@ -52,87 +52,91 @@ const Dashboard = () => {
   ]
 
   return (
-    <div className="min-h-screen from-gray-50 to-gray-100 px-6 py-12">
-      <h1 className="text-2xl font-bold text-gray-800 mb-8">Dashboard Overview</h1>
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-  {stats.map((item, i) => (
-    <div
-      key={i}
-      className="relative bg-linear-to-br from-emerald-600 to-green-700 text-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 p-6 flex flex-col justify-between border border-green-500/20"
-    >
-      <div className="flex items-center justify-between">
-        <div
-          className={`w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-inner`}
-        >
-          {item.icon}
-        </div>
-        <span className="text-sm font-semibold bg-white/10 px-3 py-1 rounded-full">
-          Active
-        </span>
-      </div>
-      <div className="mt-6">
-        <p className="text-sm font-medium text-white/80">{item.title}</p>
-        <h2 className="text-4xl font-bold text-white mt-1 drop-shadow-sm">
-          {item.value}
-        </h2>
+    <div className="min-h-screen bg-transparent px-4 sm:px-6 py-12 animate-fade-in text-white/90">
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          Dashboard Overview
+        </h1>
       </div>
 
-      <div className="mt-4 h-2 bg-white/20 rounded-full overflow-hidden">
-        <div
-          className={`h-full transition-all duration-500 ${
-            i === 0
-              ? 'bg-blue-400 w-4/5'
-              : i === 1
-              ? 'bg-green-300 w-3/5'
-              : 'bg-purple-300 w-3/4'
-          } rounded-full`}
-        ></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {stats.map((item, i) => (
+          <div
+            key={i}
+            className="glass-panel p-6 flex flex-col justify-between animate-slide-up"
+            style={{ animationDelay: `${i * 0.15}s` }}
+          >
+            <div className="flex items-center justify-between">
+              <div
+                className={`w-14 h-14 rounded-2xl flex items-center justify-center p-3
+                ${i === 0
+                    ? 'bg-blue-500/10 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)]'
+                    : i === 1
+                      ? 'bg-emerald-500/10 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]'
+                      : 'bg-purple-500/10 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.3)]'
+                  }`}
+              >
+                {item.icon}
+              </div>
+              <span className="text-xs font-semibold bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/30">
+                Active
+              </span>
+            </div>
+            <div className="mt-8">
+              <p className="text-sm font-medium text-white/60 mb-1">{item.title}</p>
+              <h2 className="text-4xl font-bold text-white tracking-tight">
+                {item.value}
+              </h2>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 shadow-[0_0_20px_rgba(16,185,129,0.3)]"></div>
-    </div>
-  ))}
-</div>
-
-      <h2 className="text-xl font-semibold text-gray-800 mb-6">Our Total</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <div className="bg-white rounded-2xl shadow-md p-6">
-          <h3 className="text-md font-semibold text-gray-700 mb-4">New week of acceptance</h3>
+      <h2 className="text-xl font-semibold text-white/90 mb-6 drop-shadow-sm">System Analytics</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="glass-panel p-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <h3 className="text-md font-medium text-white/80 mb-6">Weekly Acceptances</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={weeklySales}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="week" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="sales" fill="#3B82F6" radius={[6, 6, 0, 0]} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+              <XAxis dataKey="week" stroke="rgba(255,255,255,0.3)" tick={{ fill: 'rgba(255,255,255,0.6)' }} axisLine={false} tickLine={false} />
+              <YAxis stroke="rgba(255,255,255,0.3)" tick={{ fill: 'rgba(255,255,255,0.6)' }} axisLine={false} tickLine={false} />
+              <Tooltip
+                contentStyle={{ background: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                itemStyle={{ color: '#fff' }}
+              />
+              <Bar dataKey="sales" fill="#3B82F6" radius={[6, 6, 0, 0]} barSize={32} />
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="bg-white rounded-2xl shadow-md p-6">
-          <h3 className="text-md font-semibold text-gray-700 mb-4">
-            The week before the reception
-          </h3>
+        <div className="glass-panel p-6 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+          <h3 className="text-md font-medium text-white/80 mb-6">Reception Trends</h3>
           <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={totalSalesTrend}>
               <defs>
                 <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.6} />
+                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+              <XAxis dataKey="date" stroke="rgba(255,255,255,0.3)" tick={{ fill: 'rgba(255,255,255,0.6)' }} axisLine={false} tickLine={false} />
+              <YAxis stroke="rgba(255,255,255,0.3)" tick={{ fill: 'rgba(255,255,255,0.6)' }} axisLine={false} tickLine={false} />
+              <Tooltip
+                contentStyle={{ background: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                itemStyle={{ color: '#fff' }}
+              />
+              <Legend wrapperStyle={{ paddingTop: '20px' }} />
               <Area
                 type="monotone"
                 dataKey="netSales"
-                stroke="#3B82F6"
+                stroke="#8b5cf6"
+                strokeWidth={3}
                 fillOpacity={1}
                 fill="url(#colorSales)"
               />
-              <Line type="monotone" dataKey="returns" stroke="#EF4444" />
-              <Line type="monotone" dataKey="discounts" stroke="#F97316" />
+              <Line type="monotone" dataKey="returns" stroke="#ef4444" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="discounts" stroke="#f97316" strokeWidth={2} dot={false} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

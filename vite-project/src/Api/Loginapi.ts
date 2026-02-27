@@ -10,7 +10,7 @@ export const LoginUser = createAsyncThunk(
       const response = await axios.post(`${API_URL}/Account/login`, data)
       const token = response.data.data
       localStorage.setItem('token', token)
-     
+
       return response.data
     } catch (error) {
       console.log(error)
@@ -25,10 +25,10 @@ export const changePassword = createAsyncThunk(
   async (data: IChangePassword,) => {
     try {
 
-    const token = localStorage.getItem('token')
+      const token = localStorage.getItem('token')
       await axios.post(`${API_URL}/Account/change-password`, data, {
         headers: {
-          Authorization:token ? `Bearer ${'token'}`: '',
+          Authorization: token ? `Bearer ${token}` : '',
         },
       })
     } catch (error) {

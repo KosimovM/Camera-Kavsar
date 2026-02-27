@@ -42,7 +42,7 @@ export const getUserById = createAsyncThunk('users/getUserById', async (id: stri
     const token = localStorage.getItem('token')
     const response = await axios.get(`${API_URL}/Users/${id}`, {
       headers: {
-        Authorization: token  ? `Bearer ${'token'}`: '',
+        Authorization: token ? `Bearer ${token}` : '',
       },
     })
     return response.data.data

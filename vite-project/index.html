@@ -1,13 +1,62 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="" href="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kavsar-Kamera</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kavsar-Kamera</title>
+
+  <style>
+    body {
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .camera-box {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      border-radius: 20px;
+    }
+
+    video {
+      width: 500px;
+      border-radius: 15px;
+      border: 2px solid #333;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="camera-box">
+    <h2>📸 Kavsar Kamera</h2>
+    <video id="video" autoplay playsinline></video>
+  </div>
+
+  <script>
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+
+        document.getElementById("video").srcObject = stream;
+      }
+      catch (e) {
+        console.log("Camera error", e);
+      }
+    }
+
+    startCamera();
+  </script>
+
+</body>
+
 </html>

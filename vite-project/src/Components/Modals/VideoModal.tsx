@@ -25,7 +25,7 @@ const VideoModal = ({ cameraUrl }: VideoModalProps) => {
         <video
           controls
           className="w-full h-auto rounded"
-          src={VITE_API_URL_IMAGE}
+          src={cameraUrl}
         />
       </div>
     </div>

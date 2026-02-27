@@ -3,7 +3,7 @@ import { GetClass } from '../../Api/User/Userapi'
 import UCard from '../ModalClass/UCard'
 import type { AppDispatch, RootState } from '../../Store/Store'
 import { useDispatch, useSelector } from 'react-redux'
-import { GetStrim, GetStrims } from '../../Api/Strims/Strims'
+import { GetStrim, GetStrims } from '../../Api/Streams/Strims'
 import Video from '../ModalClass/Video'
 import { jwtDecode } from 'jwt-decode'
 

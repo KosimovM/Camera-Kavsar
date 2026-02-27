@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react'
 import { LayoutDashboard, Building2, Users, Video, Home } from 'lucide-react'
 import image from '../assets/image.png'
 import { jwtDecode } from 'jwt-decode'
-import type { CustomJwtPayload } from './Pages/Strims'
+import type { CustomJwtPayload } from './Pages/Streams'
 import Burg from './Burg'
 
 interface NavItemProps {
@@ -16,11 +16,10 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ label, to, icon, active }) => (
   <Link
     to={to}
-    className={`flex items-center gap-4 px-6 py-3 transition-all duration-200 rounded-lg ${
-      active
+    className={`flex items-center gap-4 px-6 py-3 transition-all duration-200 rounded-lg ${active
         ? 'bg-white/20 text-white font-semibold'
         : 'text-white/70 hover:bg-white/10 hover:text-white'
-    }`}
+      }`}
   >
     <div className="w-10 h-10 flex items-center justify-center">{icon}</div>
     <span className="text-lg">{label}</span>
@@ -100,12 +99,11 @@ const Layout: React.FC = () => {
             {navItems.map((item) => (
               <div
                 key={item.to}
-                className={`${
-                  role === 'user' &&
-                  (item.to === '/center' || item.to === '/class' || item.to === '/dashbord')
+                className={`${role === 'user' &&
+                    (item.to === '/center' || item.to === '/class' || item.to === '/dashbord')
                     ? 'hidden'
                     : ''
-                }`}
+                  }`}
               >
                 <NavItem
                   label={item.label}
@@ -142,25 +140,22 @@ const Layout: React.FC = () => {
       <nav className="fixed bottom-0 left-0 right-0 bg-black text-amber-100 border-t shadow-md md:hidden flex justify-around py-2 z-50">
         <Link
           to="/dashbord"
-          className={`flex flex-col items-center ${
-            location.pathname === '/dashbord' ? 'text-white' : ''
-          }`}
+          className={`flex flex-col items-center ${location.pathname === '/dashbord' ? 'text-white' : ''
+            }`}
         >
           <LayoutDashboard size={20} />
         </Link>
         <Link
           to="/center"
-          className={`flex flex-col items-center ${
-            location.pathname === '/center' ? 'text-white' : ''
-          }`}
+          className={`flex flex-col items-center ${location.pathname === '/center' ? 'text-white' : ''
+            }`}
         >
           <Building2 size={20} />
         </Link>
         <Link
           to="/class"
-          className={`flex flex-col items-center ${
-            location.pathname === '/class' ? 'text-white' : ''
-          }`}
+          className={`flex flex-col items-center ${location.pathname === '/class' ? 'text-white' : ''
+            }`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -175,17 +170,15 @@ const Layout: React.FC = () => {
         </Link>
         <Link
           to="/user"
-          className={`flex flex-col items-center ${
-            location.pathname === '/user' ? 'text-white' : ''
-          }`}
+          className={`flex flex-col items-center ${location.pathname === '/user' ? 'text-white' : ''
+            }`}
         >
           <Users size={20} />
         </Link>
         <Link
           to="/strims"
-          className={`flex flex-col items-center ${
-            location.pathname === '/strims' ? 'text-white' : ''
-          }`}
+          className={`flex flex-col items-center ${location.pathname === '/strims' ? 'text-white' : ''
+            }`}
         >
           <Video size={20} />
         </Link>

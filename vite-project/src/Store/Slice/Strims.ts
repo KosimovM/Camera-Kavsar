@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { IStrimsState } from '../../Ent/Strims'
-import { GetStrim, GetStrims } from '../../Api/Strims/Strims'
+import { GetStrim, GetStrims } from '../../Api/Streams/Strims'
 
 const initialState: IStrimsState = {
   api: { statusCode: 0, data: '', message: '' },

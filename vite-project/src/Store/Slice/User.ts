@@ -4,17 +4,11 @@ import { GetClass, getUserById } from '../../Api/User/Userapi'
 
 const initialState: IUserState = {
   data: [],
-    usersById: {
-      id: null,
-      fullName: '',
-      childName: '',
-      phoneNumber: '',
-    connect: false,
-    createdAt: '',
-    startTime: '',
-    endTime: '',
-    classRoomId: 0,
+  usersById: {
+    id: 0,
+    name: '',
     centerId: 0,
+    cameraUrl: '',
   },
 };
 
@@ -22,12 +16,12 @@ export const User = createSlice({
   name: "uth",
   initialState,
   reducers: {},
-    extraReducers: (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(GetClass.fulfilled, (state, action) => {
         state.data = action.payload || [];
       })
-       builder.addCase(getUserById.fulfilled, (state, action) => {
+    builder.addCase(getUserById.fulfilled, (state, action) => {
       state.usersById = action.payload || initialState.usersById
     })
   },
